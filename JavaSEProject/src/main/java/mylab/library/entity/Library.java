@@ -15,7 +15,7 @@ public class Library {
 
     public void addBook(Book book) {
         if (book == null) return;
-        if (findBookByISBN(book.getIsbn()) != null) return; // 중복 ISBN 무시
+        if (findBookByISBN(book.getIsbn()) != null) return; 
         books.add(book);
     }
 

@@ -1,7 +1,7 @@
 package mylab.library;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication; // 이 줄이 꼭 필요!
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class LibraryApplication {

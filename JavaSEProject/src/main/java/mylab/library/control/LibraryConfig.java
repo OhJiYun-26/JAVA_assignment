@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class LibraryConfig {
     @Bean
     public Library library() {
-        return new Library("중앙 도서관"); // 샘플 런에서 쓰는 이름
+        return new Library("중앙 도서관");
     }
 }
