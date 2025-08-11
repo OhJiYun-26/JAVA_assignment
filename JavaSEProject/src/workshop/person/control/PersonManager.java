@@ -1,40 +1,35 @@
-package workshop.person.control;
+package workshop.person.entity;
 
-import workshop.person.entity.PersonEntity;
+public class PersonEntity {
+    private String name;     // ì´ë¦„
+    private String rrn;      // ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸(ë˜ëŠ” í•™ë²ˆ ë“± ì‹ë³„ì)
+    private String address;  // ì£¼ì†Œ
+    private String phone;    // ì „í™”ë²ˆí˜¸
 
-public class PersonManager {
+    // ë„¤ê°€ ì“°ëŠ” ìƒì„±ì ì‹œê·¸ë‹ˆì²˜: (ì´ë¦„, ì£¼ë¯¼ë²ˆí˜¸, ì£¼ì†Œ, ì „í™”)
+    public PersonEntity(String name, String rrn, String address, String phone) {
+        this.name = name;
+        this.rrn = rrn;
+        this.address = address;
+        this.phone = phone;
+    }
 
-	public static void main(String[] args) {
-		PersonManager personMgr = new PersonManager();
-		
-		personMgr.printTitle("ÀÎ¹°Á¤º¸ Á¶È¸½Ã½ºÅÛ");
-		
-		//¹è¿­¼±¾ğ ¹× ÃÊ±âÈ­
-		PersonEntity[] persons = new PersonEntity[10];
-		//persons º¯¼ö´Â PersonEntity[] Å¸ÀÔÀÌ°í, persons[0]Àº PersonEntity Å¸ÀÔÀÌ´Ù.
-		personMgr.fillPersons(persons);
-		
-		//for loop¸¦ ¼øÈ¸ÇÏ¸é¼­ 
-		for(PersonEntity person:persons) {
-			System.out.println(person.getName() + " " + person.getGender());
-		}
-	}
+    public String getName()    { return name; }
+    public String getRrn()     { return rrn; }
+    public String getAddress() { return address; }
+    public String getPhone()   { return phone; }
 
-	public void fillPersons(PersonEntity[] persons) {
-		persons[0] = new PersonEntity("ÀÌ¼ºÈ£","7212121028102", "ÀÎÃµ °è¾ç±¸", "032-392-2932");
-		persons[1] = new PersonEntity("±èÇÏ´Ã","7302132363217", "¼­¿ï °­µ¿±¸", "02-362-1932");
-		persons[2] = new PersonEntity("¹Ú¿µ¼ö","7503111233201", "¼­¿ï ¼ººÏ±¸", "02-887-1542");
-		persons[3] = new PersonEntity("³ªÀÎ¼ö","7312041038988", "´ëÀü À¯¼º±¸", "032-384-2223");
-		persons[4] = new PersonEntity("È«Á¤¼ö","7606221021341", "¼­¿ï ¾çÃµ±¸", "02-158-7333");
-		persons[5] = new PersonEntity("ÀÌ¹Ì¼÷","7502142021321", "¼­¿ï °­¼­±¸", "02-323-1934");
-		persons[6] = new PersonEntity("¹Ú¼º±¸","7402061023101", "¼­¿ï Á¾·Î±¸", "02-308-0932");
-		persons[7] = new PersonEntity("À¯¼º¹Ì","7103282025101", "¼­¿ï ÀºÆò±¸", "02-452-0939");
-		persons[8] = new PersonEntity("È²ÀçÇö","7806231031101", "ÀÎÃµ Áß±¸", "032-327-2202");
-		persons[9] = new PersonEntity("ÃÖÃ¶¼ö","7601211025101", "ÀÎÃµ °è¾ç±¸", "032-122-7832");
-	}
-	
-	public void printTitle(String title) {
-		System.out.println("@@@@ " + title + " @@@@");
-	}
+    /** ì£¼ë¯¼ë²ˆí˜¸ 7ë²ˆì§¸ ìë¦¬ë¡œ ì„±ë³„ ê³„ì‚°: 1/3=ë‚¨, 2/4=ì—¬, ê·¸ ì™¸ëŠ” "ë¯¸ìƒ" */
+    public String getGender() {
+        if (rrn == null || rrn.length() < 7) return "ë¯¸ìƒ";
+        char g = rrn.charAt(6);
+        if (g == '1' || g == '3') return "ë‚¨";
+        if (g == '2' || g == '4') return "ì—¬";
+        return "ë¯¸ìƒ";
+    }
 
+    @Override
+    public String toString() {
+        return name + " / " + getGender() + " / " + phone + " / " + address;
+    }
 }
