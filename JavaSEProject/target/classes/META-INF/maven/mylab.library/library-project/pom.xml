@@ -28,20 +28,13 @@
       <artifactId>spring-boot-starter</artifactId>
     </dependency>
 
-    <!-- (옵션) 웹 필요 없으면 굳이 추가하지 마세요
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    -->
-
     <!-- 테스트: JUnit5 + Spring Test 포함 -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
       <exclusions>
-        <!-- 혹시 junit-vintage가 끼어 충돌날 경우 방지 -->
+        <!-- JUnit4 실행기(vintage) 제외: JUnit5 기준으로 테스트 작성 -->
         <exclusion>
           <groupId>org.junit.vintage</groupId>
           <artifactId>junit-vintage-engine</artifactId>
@@ -56,7 +49,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      <!-- Java 8로 확실히 고정 -->
+
+      <!-- Java 8 고정 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -64,9 +58,11 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
-      <!-- (선택) JUnit5 보장. 보통은 안 써도 됨 -->
+
+      <!-- JUnit5 호환 surefire -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
